@@ -1,3 +1,3 @@
 import { startGame } from './board/functions.js';
 
-startGame(10);
+startGame(15);

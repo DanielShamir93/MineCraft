@@ -34,6 +34,14 @@ export default class MineralsList {
         return { mineralName };
     }
 
-    
+    static getMineralImage(mineralName) {
+        switch(mineralName) {
+            case 'dirt': return 'url(./assets/images/Dirt.png)';
+            case 'grass': return 'url(./assets/images/Grass.png)';
+            case 'leaves': return 'url(./assets/images/Leaves.png)';
+            case 'oak': return 'url(./assets/images/Oak.png)';
+            case 'stone': return 'url(./assets/images/Stone.png)';
+        }
+    }
 }
 

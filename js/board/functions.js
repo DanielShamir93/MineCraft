@@ -4,4 +4,5 @@ export const startGame = (n) => {
     let board = new Board(n);
     board.fillBoardRandomly();
     document.querySelector('.container').appendChild(board.toGrid());
+    console.log(board)
 }

@@ -309,6 +309,10 @@ template {
   box-sizing: border-box; }
 
 body {
-  height: 100vh; }
-  body .container .board figure {
-    background: black; }
+  height: 100vh;
+  background-color: #000000; }
+  body .container {
+    display: flex;
+    justify-content: center; }
+    body .container .board {
+      background-color: #8EB9EF; }
