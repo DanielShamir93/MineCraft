@@ -319,13 +319,38 @@ body {
     body .container .active-box {
       display: flex;
       flex-flow: column nowrap;
-      justify-content: center; }
+      justify-content: center;
+      align-items: center;
+      padding: 0 2vw; }
       body .container .active-box .tool-box {
         height: fit-content;
         display: flex;
         flex-flow: column wrap; }
         body .container .active-box .tool-box .tools {
-          margin: 10px 0;
-          background: none; }
-          body .container .active-box .tool-box .tools img {
-            width: 10vmin; }
+          height: 15vh;
+          width: 15vh;
+          background: none;
+          margin: 2vh 0;
+          border-width: 10px;
+          border-radius: 20%;
+          border-color: unset; }
+        body .container .active-box .tool-box button[tool="pickaxe"] {
+          background-image: url(../assets/images/Pickaxe.png);
+          background-size: 70% 70%;
+          background-position: 50% 50%;
+          background-repeat: no-repeat; }
+        body .container .active-box .tool-box button[tool="shovel"] {
+          background-image: url(../assets/images/Shovel.png);
+          background-size: 80% 80%;
+          background-position: 50% 50%;
+          background-repeat: no-repeat; }
+        body .container .active-box .tool-box button[tool="axe"] {
+          background-image: url(../assets/images/Axe.png);
+          background-size: 80% 80%;
+          background-position: 50% 50%;
+          background-repeat: no-repeat; }
+      body .container .active-box .inventory {
+        margin-top: 5vh;
+        background: none;
+        width: 7vh;
+        height: 7vh; }

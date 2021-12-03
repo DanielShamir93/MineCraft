@@ -8,7 +8,7 @@ export default class Tool {
         if (name === 'pickaxe') {
             this.canMineArray = [ new Mineral('stone') ];
         } else if (name === 'shovel') {
-            this.canMineArray = [ new Mineral('dirt') ];
+            this.canMineArray = [ new Mineral('dirt'), new Mineral('grass') ];
         } else if (name === 'axe') {
             this.canMineArray = [ new Mineral('leaves'), new Mineral('oak') ];
         }
