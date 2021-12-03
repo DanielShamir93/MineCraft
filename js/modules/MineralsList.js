@@ -1,13 +1,15 @@
+import Mineral from './Mineral.js';
+
 export default class MineralsList {
 
     constructor(n) {
 
-        let dirtAmount = Math.floor(0.25 * n ** 2);
-        let grassAmount = n;
-        let leavesAmount = Math.floor(n / 2);
-        let oakAmount = Math.floor(n / 4);
-        let stoneAmount = Math.floor(n / 5);
-        let emptyAmount = n ** 2 - (dirtAmount + grassAmount + leavesAmount + oakAmount + stoneAmount);
+        const dirtAmount = Math.floor(0.25 * n ** 2);
+        const grassAmount = n;
+        const leavesAmount = Math.floor(n / 2);
+        const oakAmount = Math.floor(n / 4);
+        const stoneAmount = Math.floor(n / 5);
+        const emptyAmount = n ** 2 - (dirtAmount + grassAmount + leavesAmount + oakAmount + stoneAmount);
 
         this.list = {
             dirt: dirtAmount,
@@ -31,7 +33,7 @@ export default class MineralsList {
             this.list[mineralName]--;
         }
 
-        return { mineralName };
+        return new Mineral(mineralName);
     }
 
     static getMineralImage(mineralName) {

@@ -14,8 +14,8 @@ export default class Board {
         const mineralsList = new MineralsList(this.squaresInLine);
         for (let i = 0; i < this.squaresInLine; i ++) {
             for (let j = 0; j < this.squaresInLine; j++) {
-                let mineralElement = mineralsList.takeRandomMineral();                    // MineralsList is empty
-                this.board[i][j] = mineralElement;
+                let mineral = mineralsList.takeRandomMineral();                    // MineralsList is empty
+                this.board[i][j] = mineral;
             }
         }
     }
@@ -25,8 +25,8 @@ export default class Board {
         
         for (let i = 0; i < this.board[0].length; i++) {
             for (let j = 0; j < this.squaresInLine; j++) {
-                let mineralElement = this.board[i][j];
-                const square = this.configSquare(mineralElement);
+                let mineral = this.board[i][j];
+                const square = this.configSquare(mineral);
 
                 grid.appendChild(square);
             }
@@ -50,17 +50,16 @@ export default class Board {
         return grid;
     }
 
-    configSquare = (mineralElement) => {
+    configSquare = (mineral) => {
         const square = document.createElement('figure');
         const screenPercentage = 100;
         const squareSize = `${screenPercentage / this.squaresInLine}vmin`;
         
-        square.className = mineralElement.mineralName;
-
+        square.setAttribute('mineral', mineral.name);
         Object.assign(square.style, {
             width: squareSize,
             height: squareSize,
-            backgroundImage: MineralsList.getMineralImage(square.className),
+            backgroundImage: MineralsList.getMineralImage(mineral.name),
             backgroundSize: squareSize
         });
 

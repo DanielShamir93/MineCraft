@@ -1,8 +1,13 @@
 import Board from '../modules/board.js';
 
-export const startGame = (n) => {
-    let board = new Board(n);
+let board = null;
+
+const startGame = (n) => {
+    board = new Board(n);
+    let container = document.querySelector('.container');
+
     board.fillBoardRandomly();
-    document.querySelector('.container').appendChild(board.toGrid());
-    console.log(board)
+    container.insertBefore(board.toGrid(), container.firstChild);
 }
+
+export { startGame };
