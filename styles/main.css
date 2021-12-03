@@ -316,3 +316,16 @@ body {
     justify-content: center; }
     body .container .board {
       background-color: #8EB9EF; }
+    body .container .active-box {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center; }
+      body .container .active-box .tool-box {
+        height: fit-content;
+        display: flex;
+        flex-flow: column wrap; }
+        body .container .active-box .tool-box .tools {
+          margin: 10px 0;
+          background: none; }
+          body .container .active-box .tool-box .tools img {
+            width: 10vmin; }

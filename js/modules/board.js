@@ -88,8 +88,12 @@ export default class Board {
         
     }
 
-    setActiveTool = (toolName) => {
-        this.activeTool = new Tool(toolName);
+    setActiveTool = (tool) => {
+        if (!tool) {
+            this.activeTool = null;
+            return;
+        }
+        this.activeTool = tool;
     }
 
     getActiveTool = () => {

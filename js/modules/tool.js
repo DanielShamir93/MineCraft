@@ -14,6 +14,10 @@ export default class Tool {
         }
     }
 
+    getName () {
+        return this.name;
+    }
+
     affectiveOn(mineralArg) {
         return this.canMineArray.some((mineral) => {
             return mineral.name === mineralArg.name;
