@@ -1,8 +1,9 @@
 import Board from '../modules/board.js';
 
+
 let board = null;
 
-const startGame = (n) => {
+const setGame = (n) => {
     board = new Board(n);
     let container = document.querySelector('.container');
 
@@ -10,4 +11,4 @@ const startGame = (n) => {
     container.insertBefore(board.toGrid(), container.firstChild);
 }
 
-export { startGame };
+export { setGame, board };

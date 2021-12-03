@@ -1,22 +1,51 @@
-import Mineral from '../modules/tool.js';
+import { board } from './functions.js';
+import Mineral from '../modules/mineral.js';
 
-const inventoryStack = [];
-
-const boardListener = document.addEventListener('click', (e) => {
-    const element = e.target;
-
-    if (element.getAttribute('mineral') === 'dirt') {
-        element.style.backgroundImage = '';
-        element.setAttribute('mineral', 'empty');
-        inventoryStack.push(new Mineral('dirt'));
+const activeToolListener = document.addEventListener('click', (e) => {
+    if (e.target.hasAttribute('tool')) {
+        const toolElement = e.target;
+        const toolName = toolElement.getAttribute('tool');
+        board.setActiveTool(toolName);
+        console.log(board.getActiveTool())
     }
-    console.log(inventoryStack)
+
+})
+
+const mineralToInventoryListener = document.addEventListener('click', (e) => {
+    if (e.target.hasAttribute('mineral') && 
+        e.target.getAttribute('mineral') !== 'empty') {
+        // The element is a non-empty mineral
+        const mineralElement = e.target;
+        const mineralName = mineralElement.getAttribute('mineral');
+
+        if (!board.getActiveTool()) {
+            return;
+        }
+
+        if (!board.getActiveTool().affectiveOn(new Mineral(mineralName))) {
+            return;
+        }
+
+        console.log(board.getActiveTool())
+        console.log(board.getActiveTool().affectiveOn(new Mineral(mineralName)))
+
+
+        console.log('wow')
+
+        const xAxis = mineralElement.getAttribute('xAxis');
+        const yAxis = mineralElement.getAttribute('yAxis');
+
+        board.inventoryPush(new Mineral(mineralName));
+        board.removeSquare(xAxis, yAxis);
+        // Render the grid
+        let container = document.querySelector('.container');
+        container.replaceChild(board.toGrid(), container.firstChild);
+    }
 })
 
 
 
 
-export { boardListener };
+export { mineralToInventoryListener, activeToolListener };
 
 
-//TODO: match tool to mineral in the UI

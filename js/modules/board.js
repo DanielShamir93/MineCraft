@@ -1,8 +1,12 @@
-import MineralsList from './MineralsList.js';
+import Mineral from './mineral.js';
+import MineralsList from './mineralsList.js';
+import Tool from './tool.js'
 
 export default class Board {
 
     constructor(squaresInLine) {
+        this.inventoryStack = [];
+        this.activeTool = null;
         this.squaresInLine = squaresInLine;
         this.board = new Array(this.squaresInLine);
         for (let i = 0; i < this.squaresInLine; i++) {
@@ -26,7 +30,7 @@ export default class Board {
         for (let i = 0; i < this.board[0].length; i++) {
             for (let j = 0; j < this.squaresInLine; j++) {
                 let mineral = this.board[i][j];
-                const square = this.configSquare(mineral);
+                const square = this.configSquare(mineral, j, i);
 
                 grid.appendChild(square);
             }
@@ -50,20 +54,50 @@ export default class Board {
         return grid;
     }
 
-    configSquare = (mineral) => {
+    configSquare = (mineral, xAxis, yAxis) => {
         const square = document.createElement('figure');
         const screenPercentage = 100;
         const squareSize = `${screenPercentage / this.squaresInLine}vmin`;
         
         square.setAttribute('mineral', mineral.name);
+        square.setAttribute('xAxis', xAxis);
+        square.setAttribute('yAxis', yAxis);
         Object.assign(square.style, {
             width: squareSize,
             height: squareSize,
-            backgroundImage: MineralsList.getMineralImage(mineral.name),
+            backgroundImage: mineral.image,
             backgroundSize: squareSize
         });
 
         return square;
+    }
+
+    inventoryPush = (mineral) => {
+        this.inventoryStack.push(mineral);
+    }
+
+    inventoryPop = () => {
+        return this.inventoryStack.pop();
+    }
+
+    removeSquare = (xAxis, yAxis) => {
+        this.board[yAxis][xAxis] = new Mineral('empty');
+    }
+    
+    addSquare = () => {
+        
+    }
+
+    setActiveTool = (toolName) => {
+        this.activeTool = new Tool(toolName);
+    }
+
+    getActiveTool = () => {
+        return this.activeTool;
+    }
+
+    isBoardArranged = () => {
+
     }
 
     getBoard = () => {

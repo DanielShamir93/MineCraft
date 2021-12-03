@@ -1,4 +1,4 @@
-import Mineral from './Mineral.js';
+import Mineral from './mineral.js';
 
 export default class MineralsList {
 
@@ -34,16 +34,6 @@ export default class MineralsList {
         }
 
         return new Mineral(mineralName);
-    }
-
-    static getMineralImage(mineralName) {
-        switch(mineralName) {
-            case 'dirt': return 'url(./assets/images/Dirt.png)';
-            case 'grass': return 'url(./assets/images/Grass.png)';
-            case 'leaves': return 'url(./assets/images/Leaves.png)';
-            case 'oak': return 'url(./assets/images/Oak.png)';
-            case 'stone': return 'url(./assets/images/Stone.png)';
-        }
     }
 }
 

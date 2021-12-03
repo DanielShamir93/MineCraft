@@ -1,4 +1,4 @@
-import Mineral from './Mineral.js';
+import Mineral from './mineral.js';
 
 export default class Tool {
 
@@ -6,17 +6,17 @@ export default class Tool {
         this.name = name;
 
         if (name === 'pickaxe') {
-            this.mineMinerals = [ new Mineral('stone') ];
+            this.canMineArray = [ new Mineral('stone') ];
         } else if (name === 'shovel') {
-            this.mineMinerals = [ new Mineral('dirt') ];
+            this.canMineArray = [ new Mineral('dirt') ];
         } else if (name === 'axe') {
-            this.mineMinerals = [ new Mineral('leaves'), new Mineral('oak') ];
+            this.canMineArray = [ new Mineral('leaves'), new Mineral('oak') ];
         }
     }
 
-    affectiveOn(mineral) {
-        if (this.mineMinerals.includes(mineral)) {
-            return true;
-        }
+    affectiveOn(mineralArg) {
+        return this.canMineArray.some((mineral) => {
+            return mineral.name === mineralArg.name;
+        });
     }
 }
