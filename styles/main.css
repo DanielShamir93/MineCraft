@@ -331,7 +331,7 @@ body {
           width: 15vh;
           background: none;
           margin: 2vh 0;
-          border-width: 10px;
+          border-width: 0.8vh;
           border-radius: 20%;
           border-color: unset; }
         body .container .active-box .tool-box button[tool="pickaxe"] {
@@ -352,5 +352,8 @@ body {
       body .container .active-box .inventory {
         margin-top: 5vh;
         background: none;
+        background-size: 100% 100%;
         width: 7vh;
-        height: 7vh; }
+        height: 7vh;
+        border-width: 0.5vh;
+        border-color: unset; }

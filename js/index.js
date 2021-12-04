@@ -1,6 +1,6 @@
 import { setGame } from './board/functions.js';
-import { mineralToInventoryListener, activeToolListener } from './board/listeners.js';
+import { mineralToInventoryListener, activeToolListener, inventoryButtonListener, inventoryGridListener } from './board/listeners.js';
 
 
 
-setGame(15);
+setGame(10);

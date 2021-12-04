@@ -1,11 +1,11 @@
 import Mineral from './mineral.js';
 import MineralsList from './mineralsList.js';
 import Tool from './tool.js'
-
 export default class Board {
 
     constructor(squaresInLine) {
         this.inventoryStack = [];
+        this.isInventoryPopPossible = false;
         this.activeTool = null;
         this.squaresInLine = squaresInLine;
         this.board = new Array(this.squaresInLine);
@@ -58,14 +58,14 @@ export default class Board {
         const square = document.createElement('figure');
         const screenPercentage = 100;
         const squareSize = `${screenPercentage / this.squaresInLine}vmin`;
-        
+
         square.setAttribute('mineral', mineral.name);
         square.setAttribute('xAxis', xAxis);
         square.setAttribute('yAxis', yAxis);
         Object.assign(square.style, {
             width: squareSize,
             height: squareSize,
-            backgroundImage: mineral.image,
+            backgroundImage: `url(${mineral.image})`,
             backgroundSize: squareSize
         });
 
@@ -80,12 +80,31 @@ export default class Board {
         return this.inventoryStack.pop();
     }
 
-    removeSquare = (xAxis, yAxis) => {
+    inventoryTop = () => {
+        return this.inventoryStack[this.inventoryStack.length - 1];
+    }
+
+    isInventoryEmpty = () => {
+        return this.inventoryStack.length === 0;
+    }
+
+    setPopPossible = (boolean) => {
+        this.isInventoryPopPossible = boolean;
+    }
+
+    isPopPossible = () => {
+        return this.isInventoryPopPossible;
+    }
+
+    removeFromSquare = (xAxis, yAxis) => {
         this.board[yAxis][xAxis] = new Mineral('empty');
     }
     
-    addSquare = () => {
+    insertToSquare = (emptyMineralElement) => {
+        const xAxis = emptyMineralElement.getAttribute('xAxis');
+        const yAxis = emptyMineralElement.getAttribute('yAxis');
         
+        this.board[yAxis][xAxis] = this.inventoryPop();
     }
 
     setActiveTool = (tool) => {
