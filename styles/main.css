@@ -474,7 +474,11 @@ body {
   .opening {
     background-image: url(../assets/images/opening-mobile.jpeg); }
     .opening .menu {
-      margin-top: 20vh; }
+      margin-top: 18vh; }
+      .opening .menu .description, .opening .menu .game-rules {
+        font-size: 5vw; }
+      .opening .menu summary {
+        font-size: 10vw; }
     .opening .menu::after {
       content: "";
       position: absolute;
@@ -491,8 +495,7 @@ body {
       justify-content: space-around;
       margin-bottom: 10vh; }
       .container .status-box {
-        flex-flow: row nowrap;
-        position: relative; }
+        flex-flow: row nowrap; }
         .container .status-box .timer {
           width: 20vw;
           font-size: 8vw;
@@ -506,7 +509,8 @@ body {
           color: white;
           position: absolute;
           top: 5vh;
-          left: 40vw; }
+          left: 50vw;
+          transform: translateX(-50%); }
       .container .status .to-menu {
         font-size: 2vh;
         margin-bottom: 0; }
@@ -522,4 +526,8 @@ body {
           border-width: 1vw; }
       .container .active-box .inventory {
         margin-top: 0;
-        margin-left: 10vw; } }
+        margin-left: 10vw; }
+  .message {
+    flex-flow: row wrap;
+    justify-content: center;
+    padding: 5vw; } }
