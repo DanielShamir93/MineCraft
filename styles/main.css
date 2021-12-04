@@ -309,7 +309,11 @@ template {
   box-sizing: border-box;
   font-family: Orbitron; }
 
-body .opening {
+body {
+  height: 100vh;
+  background-color: #000000; }
+
+.opening {
   background-image: url(../assets/images/opening.jpeg);
   background-size: cover;
   height: 100vh;
@@ -317,14 +321,14 @@ body .opening {
   flex-flow: column wrap;
   justify-content: center;
   align-items: center; }
-  body .opening .menu {
+  .opening .menu {
     display: flex;
     flex-flow: column wrap;
     align-items: center;
     justify-content: space-between;
     padding: 5vmin;
-    background: rgba(255, 255, 255, 0.2); }
-    body .opening .menu .play, body .opening .menu .settings, body .opening .menu .description, body .opening .menu .game-rules {
+    background: rgba(255, 255, 255, 0.1); }
+    .opening .menu .play, .opening .menu .settings, .opening .menu .description, .opening .menu .game-rules {
       background: none;
       font-size: 5vh;
       margin-bottom: 5vh;
@@ -333,118 +337,112 @@ body .opening {
       outline: none;
       border: none;
       text-shadow: 0.1vh 0.5vh black; }
-    body .opening .menu summary {
+    .opening .menu summary {
       font-size: 5vh; }
-    body .opening .menu .game-rules, body .opening .menu .description {
+    .opening .menu .game-rules, .opening .menu .description {
       font-size: 4vh; }
-    body .opening .menu .play:hover, body .opening .menu summary:hover {
+    .opening .menu .play:hover, .opening .menu summary:hover {
       text-decoration: underline; }
 
-body {
-  height: 100vh;
-  background-color: #000000; }
-  body .container {
-    display: none;
-    justify-content: center; }
-    body .container .status {
+.container {
+  display: none;
+  justify-content: center; }
+  .container .status {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2vw;
+    user-select: none; }
+    .container .status-box {
       display: flex;
       flex-flow: column nowrap;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 2vw;
-      user-select: none; }
-      body .container .status-box {
-        display: flex;
-        flex-flow: column nowrap;
-        align-items: center; }
-        body .container .status-box p {
-          margin: 5vh 0; }
-        body .container .status-box .timer {
-          font-size: 5vh;
-          width: 13vh;
-          color: white;
-          border: 0.7vh solid gray;
-          padding: 2vh;
-          position: relative;
-          text-align: center; }
-        body .container .status-box .timer::after {
-          content: 'Sec';
-          position: absolute;
-          bottom: 0.5vh;
-          right: 0.5vh;
-          font-size: 1.5vh; }
-        body .container .status-box label {
-          font-size: 4vh;
-          color: white; }
-        body .container .status-box .score {
-          font-size: 4vh;
-          color: white; }
-        body .container .status-box .comment {
-          height: 5vh;
-          color: red; }
-      body .container .status .to-menu {
-        font-size: 2vh;
-        margin-bottom: 5vh;
+      align-items: center; }
+      .container .status-box p {
+        margin: 5vh 0; }
+      .container .status-box .timer {
+        font-size: 5vh;
+        width: 13vh;
         color: white;
-        background: none;
-        padding: 1vh;
-        cursor: pointer;
-        border-width: 0.3vh; }
-    body .container .board {
-      background-color: #8EB9EF;
-      cursor: crosshair; }
-    body .container .active-box {
+        border: 0.7vh solid gray;
+        padding: 2vh;
+        position: relative;
+        text-align: center; }
+      .container .status-box .timer::after {
+        content: 'Sec';
+        position: absolute;
+        bottom: 0.5vh;
+        right: 0.5vh;
+        font-size: 1.5vh; }
+      .container .status-box label {
+        font-size: 4vh;
+        color: white; }
+      .container .status-box .score {
+        font-size: 4vh;
+        color: white; }
+    .container .status .to-menu {
+      font-size: 2vh;
+      margin-bottom: 5vh;
+      color: white;
+      background: none;
+      padding: 1vh;
+      cursor: pointer;
+      border-width: 0.3vh; }
+  .container .board {
+    background-color: #8EB9EF;
+    cursor: crosshair; }
+  .container .active-box {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2vw; }
+    .container .active-box .tool-box {
+      height: fit-content;
       display: flex;
-      flex-flow: column nowrap;
-      justify-content: center;
-      align-items: center;
-      padding: 0 2vw; }
-      body .container .active-box .tool-box {
-        height: fit-content;
-        display: flex;
-        flex-flow: column wrap; }
-        body .container .active-box .tool-box .tools {
-          height: 15vh;
-          width: 15vh;
-          background: none;
-          margin: 2vh 0;
-          border-width: 0.8vh;
-          border-color: unset;
-          cursor: pointer; }
-        body .container .active-box .tool-box button[tool="pickaxe"] {
-          background-image: url(../assets/images/Pickaxe.png);
-          background-size: 70% 70%;
-          background-position: 50% 50%;
-          background-repeat: no-repeat; }
-        body .container .active-box .tool-box button[tool="shovel"] {
-          background-image: url(../assets/images/Shovel.png);
-          background-size: 80% 80%;
-          background-position: 50% 50%;
-          background-repeat: no-repeat; }
-        body .container .active-box .tool-box button[tool="axe"] {
-          background-image: url(../assets/images/Axe.png);
-          background-size: 80% 80%;
-          background-position: 50% 50%;
-          background-repeat: no-repeat; }
-      body .container .active-box .inventory {
-        margin-top: 5vh;
+      flex-flow: column wrap; }
+      .container .active-box .tool-box .tools {
+        height: 15vh;
+        width: 15vh;
         background: none;
-        background-size: 100% 100%;
-        width: 7vh;
-        height: 7vh;
-        border-width: 0.5vh;
+        margin: 2vh 0;
+        border-width: 0.8vh;
         border-color: unset;
-        cursor: pointer;
-        position: relative; }
-        body .container .active-box .inventory-size {
-          position: absolute;
-          top: 5vh;
-          left: 50%;
-          transform: translateX(-50%);
-          padding-top: 2vh;
-          font-size: 2vh;
-          color: white;
-          text-shadow: 0.1vh 0.5vh black; }
+        cursor: pointer; }
+      .container .active-box .tool-box button[tool="pickaxe"] {
+        background-image: url(../assets/images/Pickaxe.png);
+        background-size: 70% 70%;
+        background-position: 50% 50%;
+        background-repeat: no-repeat; }
+      .container .active-box .tool-box button[tool="shovel"] {
+        background-image: url(../assets/images/Shovel.png);
+        background-size: 80% 80%;
+        background-position: 50% 50%;
+        background-repeat: no-repeat; }
+      .container .active-box .tool-box button[tool="axe"] {
+        background-image: url(../assets/images/Axe.png);
+        background-size: 80% 80%;
+        background-position: 50% 50%;
+        background-repeat: no-repeat; }
+    .container .active-box .inventory {
+      margin-top: 5vh;
+      background: none;
+      background-size: 100% 100%;
+      width: 7vh;
+      height: 7vh;
+      border-width: 0.5vh;
+      border-color: unset;
+      cursor: pointer;
+      position: relative; }
+      .container .active-box .inventory-size {
+        position: absolute;
+        top: 5vh;
+        left: 50%;
+        transform: translateX(-50%);
+        padding-top: 2vh;
+        font-size: 2vh;
+        color: white;
+        text-shadow: 0.1vh 0.5vh black; }
 
 .message {
   position: absolute;
@@ -471,3 +469,43 @@ body {
     font-size: 2vh;
     border: none;
     cursor: pointer; }
+
+@media (max-width: 768px) {
+  .opening {
+    background-image: url(../assets/images/opening-mobile.jpeg); }
+    .opening .menu {
+      margin-top: 20vh; }
+    .opening .menu::after {
+      content: "";
+      position: absolute;
+      width: 80vw;
+      height: 15vh;
+      top: 10vh;
+      background-image: url(../assets/images/minecraft-title.png);
+      background-repeat: no-repeat;
+      background-size: contain; }
+  .container {
+    flex-flow: column wrap; }
+    .container .status {
+      flex-flow: row nowrap;
+      justify-content: space-around; }
+      .container .status-box {
+        flex-flow: row nowrap;
+        position: relative; }
+        .container .status-box .timer {
+          width: 20vw;
+          font-size: 8vw;
+          padding: 1vw 1vw 5vw 1vw;
+          border: 1vw solid gray;
+          margin-right: 8vw; }
+        .container .status-box label {
+          font-size: 8vw; }
+        .container .status-box .score {
+          font-size: 8vw;
+          color: white;
+          position: absolute;
+          top: 5vh;
+          left: 40vw; }
+      .container .status .to-menu {
+        font-size: 2vh;
+        margin-bottom: 0; } }
