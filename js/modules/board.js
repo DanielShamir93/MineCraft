@@ -130,54 +130,42 @@ export default class Board {
             for (let j = 0; j < this.squaresInLine; j++) {
                 let mineral = this.board[i][j];
 
-                // if (mineral.name === 'dirt') {
-                //     if (this.downSquare(i, j) &&
-                //         this.downSquare(i, j).name !== 'dirt') {
-                //         console.log('from dirt')
-                //         // From under: There is a square but its not dirt
-                //         return false;
-                //     }
-                // } else if (mineral.name === 'grass') {
-                //     if (!this.downSquare(i, j) ||
-                //         this.downSquare(i, j).name !== 'dirt') {
-                //         // From under: There isn't a square or there is a square but its not dirt
-                //         console.log('from grass')
-                //         return false;
-                //     }
-                // if (mineral.name === 'leaves') {
-                //     if ((!this.downSquare(i, j) || (this.downSquare(i, j).name !== 'leaves' && this.downSquare(i, j).name !== 'oak' && this.upSquare(i, j).name !== 'empty')) ||
-                //         (this.upSquare(i, j) && (this.upSquare(i, j).name !== 'leaves' && this.upSquare(i, j).name !== 'empty'))) {
-                //         // From under: There isn't a square or its not leaves or an oak ||
-                //         // From above: There is a square but its not leaves or empty square
-                        
-                //         console.log('from leaves', `(${i},${j})`);
-                //         return this.isAttachedToOak(i, j);
-                //     }}
-
-                if (mineral.name === 'leaves') {
-                    if (!this.isAttachedToOak(i, j)) {
-                        console.log('from leaves', `(${i},${j})`);
+                if (mineral.name === 'dirt') {
+                    if (this.downSquare(i, j) &&
+                        this.downSquare(i, j).name !== 'dirt') {
+                        console.log('from dirt')
+                        // From under: There is a square but its not dirt
                         return false;
                     }
-                    
+                } else if (mineral.name === 'grass') {
+                    if (!this.downSquare(i, j) ||
+                        this.downSquare(i, j).name !== 'dirt') {
+                        // From under: There isn't a square or there is a square but its not dirt
+                        console.log('from grass')
+                        return false;
+                    }
+                } else if (mineral.name === 'leaves') {
+                    if (!this.isAttachedToOak(i, j)) {
+                        console.log('from leaves');
+                        return false;
+                    }   
+                } else if (mineral.name === 'oak') {
+                    if ((!this.downSquare(i, j) || (this.downSquare(i, j).name !== 'grass' && this.downSquare(i, j).name !== 'oak')) ||
+                        (this.upSquare(i, j) && (this.upSquare(i, j).name !== 'leaves' && this.upSquare(i, j).name !== 'oak' && this.upSquare(i, j).name !== 'empty'))) {
+                        // From under: There isn't a square or its not a grass and not an oak
+                        // From above: There is a square but its not leaves, not oak and not empty
+                        console.log('from oak')
+                        return false;
+                    }
+                } else if (mineral.name === 'stone') {
+                    if ((!this.downSquare(i, j) || (this.downSquare(i, j).name !== 'grass' && this.downSquare(i, j).name !== 'stone')) ||
+                        (this.upSquare(i, j) && (this.upSquare(i, j).name !== 'stone' && this.upSquare(i, j).name !== 'leaves' && this.upSquare(i, j).name !== 'empty'))) {
+                        // From under: There isn't a square or its not a grass and not a stone
+                        // From above: There is a square but its not stone and not leaves and not empty
+                        console.log('from stone')
+                        return false;
+                    }
                 }
-                // } else if (mineral.name === 'oak') {
-                //     if ((!this.downSquare(i, j) || (this.downSquare(i, j).name !== 'grass' && this.downSquare(i, j).name !== 'oak')) ||
-                //         (this.upSquare(i, j) && (this.upSquare(i, j).name !== 'leaves' && this.upSquare(i, j).name !== 'oak' && this.upSquare(i, j).name !== 'empty'))) {
-                //         // From under: There isn't a square or its not a grass and not an oak
-                //         // From above: There is a square but its not leaves, not oak and not empty
-                //         console.log('from oak')
-                //         return false;
-                //     }
-                // } else if (mineral.name === 'stone') {
-                //     if ((!this.downSquare(i, j) || (this.downSquare(i, j).name !== 'grass' && this.downSquare(i, j).name !== 'stone')) ||
-                //         (this.upSquare(i, j) && (this.upSquare(i, j).name !== 'stone' && this.upSquare(i, j).name !== 'leaves' && this.upSquare(i, j).name !== 'empty'))) {
-                //         // From under: There isn't a square or its not a grass and not a stone
-                //         // From above: There is a square but its not stone and not leaves and not empty
-                //         console.log('from stone')
-                //         return false;
-                //     }
-                // }
             }
         }
         // The board arranged properly
@@ -219,8 +207,7 @@ export default class Board {
     isAttachedToOak = (i, j) => {
         if (i < 0 || j < 0 || i >= this.squaresInLine || j >= this.squaresInLine) {
             // Exceeded board borders
-            console.log(`from exceeded: (${i},${j})`)
-            false;
+            return false;
         }
 
         if (this.board[i][j] === null) {
