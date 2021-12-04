@@ -11,7 +11,6 @@ const setGame = (n) => {
     } else {
         alert('Board must have at least 5 rows and columns');
     }
-    
 }
 
 export { setGame, board };

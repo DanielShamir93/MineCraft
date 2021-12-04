@@ -6,10 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MineCraft</title>
     <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"> 
     <script type="module" src="./js/index.js" defer></script>
   </head>
   <body>
-    <div class="container">
+    <main class="opening">
+      <section class="menu">
+        <button class="play">Play</button>
+        <details class="description">Description</details>
+      </section>
+    </main>
+    <main class="container">
       <aside class="status">
         <div class="status-box">
           <p class="timer">01:00</p>
@@ -25,6 +34,6 @@
         </div>
         <button class="inventory"></button>
       </aside>
-    </div>
+    </main>
   </body>
 </html>

@@ -47,7 +47,7 @@ const mineralToInventoryListener = document.addEventListener('click', (e) => {
         board.removeFromSquare(xAxis, yAxis);
         // Render the grid
         let container = document.querySelector('.container');
-        container.replaceChild(board.toGrid(), container.firstChild);
+        container.replaceChild(board.toGrid(), container.children[1]);
 
         // Set the background image of the inventory button 
         const inventoryElement = document.querySelector('.inventory');
@@ -85,7 +85,7 @@ const inventoryGridListener = document.addEventListener('click', (e) => {
             board.insertToSquare(emptyMineralElement);
             // Render the grid
             const container = document.querySelector('.container');
-            container.replaceChild(board.toGrid(), container.firstChild);
+            container.replaceChild(board.toGrid(), container.children[1]);
             board.setPopPossible(false);
             // Reset inventory button style
             const inventoryElement = document.querySelector('.inventory');

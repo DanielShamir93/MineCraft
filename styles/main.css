@@ -306,13 +306,48 @@ template {
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  font-family: Pacifico; }
+
+body .opening {
+  background-image: url(../assets/images/opening.jpeg);
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center; }
+  body .opening .menu {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5vmin;
+    border-radius: 20%;
+    background: rgba(255, 255, 255, 0.2);
+    margin-top: 15vh; }
+    body .opening .menu .play {
+      background: none;
+      font-size: 5vh;
+      margin-bottom: 5vh;
+      cursor: pointer;
+      color: #847A79;
+      outline: none;
+      border: none;
+      text-shadow: 0.1vh 0.5vh black; }
+    body .opening .menu .description {
+      font-size: 5vh;
+      cursor: pointer;
+      color: #847A79;
+      text-shadow: 0.1vh 0.5vh black; }
+    body .opening .menu .play:hover {
+      text-decoration: underline; }
 
 body {
   height: 100vh;
   background-color: #000000; }
   body .container {
-    display: flex;
+    display: none;
     justify-content: center; }
     body .container .status {
       display: flex;
