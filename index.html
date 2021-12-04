@@ -24,12 +24,14 @@
     <main class="container">
       <aside class="status">
         <div class="status-box">
-          <p class="timer">01:00</p>
-          <p class="score">Score: 0</p>
+          <p class="timer"></p>
+          <label for="score">Score</label>
+          <p class="score">0</p>
           <p class="comment"></p>
         </div>
         <button class="to-menu">Menu</button>
       </aside>
+      <div class=".board"></div>
       <aside class="active-box">
         <div class="tool-box">
           <button tool="pickaxe" class="tools"></button>
@@ -40,6 +42,13 @@
           <span class="inventory-size">0</span>
         </button>
       </aside>
+      <div class="message">
+        <p class="message-content"></p>
+        <div class="message-buttons">
+          <button class="message-buttons-retry">Play Again</button>
+          <button class="message-buttons-next">Next Level</button>
+        </div>
+      </div>
     </main>
   </body>
 </html>

@@ -346,7 +346,7 @@ body {
   height: 100vh;
   background-color: #000000; }
   body .container {
-    display: flex;
+    display: none;
     justify-content: center; }
     body .container .status {
       display: flex;
@@ -363,9 +363,21 @@ body {
           margin: 5vh 0; }
         body .container .status-box .timer {
           font-size: 5vh;
+          width: 13vh;
           color: white;
           border: 0.7vh solid gray;
-          padding: 2vh; }
+          padding: 2vh;
+          position: relative;
+          text-align: center; }
+        body .container .status-box .timer::after {
+          content: 'Sec';
+          position: absolute;
+          bottom: 0.5vh;
+          right: 0.5vh;
+          font-size: 1.5vh; }
+        body .container .status-box label {
+          font-size: 4vh;
+          color: white; }
         body .container .status-box .score {
           font-size: 4vh;
           color: white; }
@@ -378,7 +390,8 @@ body {
         color: white;
         background: none;
         padding: 1vh;
-        cursor: pointer; }
+        cursor: pointer;
+        border-width: 0.3vh; }
     body .container .board {
       background-color: #8EB9EF;
       cursor: crosshair; }
@@ -434,3 +447,27 @@ body {
           font-size: 2vh;
           color: white;
           text-shadow: 0.1vh 0.5vh black; }
+
+.message {
+  position: absolute;
+  top: 50%;
+  background: rgba(0, 0, 0, 0.8);
+  transform: translateY(-50%);
+  display: none;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  height: 25vh;
+  padding: 5vh; }
+  .message-content {
+    text-align: center;
+    line-height: 5vh;
+    height: 5vh;
+    background: rgba(255, 255, 255, 0.8);
+    font-size: 3vh;
+    user-select: none; }
+  .message button {
+    padding: 1vh;
+    margin: 1vh;
+    font-size: 2vh;
+    border: none;
+    cursor: pointer; }

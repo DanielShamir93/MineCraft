@@ -1,4 +1,4 @@
-import { board } from './functions.js';
+import { board, startClock, resetBoard } from './functions.js';
 import Mineral from '../modules/mineral.js';
 import Tool from '../modules/tool.js';
 
@@ -25,6 +25,8 @@ const activeToolListener = document.addEventListener('click', (e) => {
         // Set style for current tool button and reset inventory style
         toolElement.style.borderColor = 'green';
         document.querySelector('.inventory').style.borderColor = 'unset';
+        // Start the clock
+        startClock();
     }
 });
 
@@ -109,6 +111,15 @@ const inventoryGridListener = document.addEventListener('click', (e) => {
     }
 });
 
-export { mineralToInventoryListener, activeToolListener, inventoryButtonListener, inventoryGridListener };
+const goToMenuListener = document.querySelector('.to-menu').addEventListener('click', (e) => {
+    document.querySelector('.container').style.display = 'none';
+    document.querySelector('.opening').style.display = 'flex';
+});
+
+const playAgainListener = document.querySelector('.message-buttons-retry').addEventListener('click', (e) => {
+    resetBoard();
+});
+
+export { mineralToInventoryListener, activeToolListener, inventoryButtonListener, inventoryGridListener, goToMenuListener, playAgainListener };
 
 
