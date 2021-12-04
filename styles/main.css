@@ -314,6 +314,30 @@ body {
   body .container {
     display: flex;
     justify-content: center; }
+    body .container .status {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 0 2vw; }
+      body .container .status-box {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center; }
+        body .container .status-box p {
+          margin: 5vh 0; }
+        body .container .status-box .timer {
+          font-size: 5vh;
+          color: white;
+          border: 0.7vh solid gray;
+          border-radius: 20%;
+          padding: 2vh; }
+        body .container .status-box .score {
+          font-size: 4vh;
+          color: white; }
+        body .container .status-box .comment {
+          height: 5vh;
+          color: red; }
     body .container .board {
       background-color: #8EB9EF; }
     body .container .active-box {
