@@ -389,7 +389,8 @@ body {
       cursor: pointer;
       border-width: 0.3vh; }
   .container .board {
-    background-color: #8EB9EF;
+    background-image: url(../assets/images/sky.jpg);
+    background-size: cover;
     cursor: crosshair; }
   .container .active-box {
     display: flex;
