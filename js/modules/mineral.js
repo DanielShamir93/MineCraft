@@ -24,4 +24,5 @@ export default class Mineral {
     getImage() {
         return this.image;
     }
+
 }

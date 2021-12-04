@@ -27,7 +27,7 @@ export default class Board {
     toGrid = () => {
         const grid = this.configGrid();
         
-        for (let i = 0; i < this.board[0].length; i++) {
+        for (let i = 0; i < this.squaresInLine; i++) {
             for (let j = 0; j < this.squaresInLine; j++) {
                 let mineral = this.board[i][j];
                 const square = this.configSquare(mineral, j, i);
@@ -120,11 +120,53 @@ export default class Board {
     }
 
     isBoardArranged = () => {
-
+        for (let i = 0; i < this.squaresInLine; i++) {
+            for (let j = 0; j < this.squaresInLine; j++) {
+                let mineral = this.board[i][j];
+                
+                if (mineral.name === 'dirt') {
+                    if (this.downSquare() &&
+                        this.downSquare().name !== 'dirt') {
+                        // From under: There is a square but its not dirt
+                        return false;
+                    }
+                } else if (mineral.name === 'grass') {
+                    if (!this.downSquare() ||
+                        this.downSquare().name !== 'dirt') {
+                        // From under: There isn't a square or there is a square but its not dirt
+                        return false;
+                    }
+                } else if (mineral.name === 'leaves') {
+                    if ((!this.downSquare() || (this.downSquare().name ==! 'leaves' || this.downSquare().name ==! 'oak')) ||
+                        (this.upSquare() && (this.upSquare().name ==! 'leaves' || this.upSquare().name ==! 'empty'))) {
+                        // From under: There isn't a square or its not leaves or an oak ||
+                        // From above: There is a square but its not leaves or empty square ||                        
+                        return false;
+                    }
+                } else if (mineral.name === 'oak') {
+                    if ((!this.downSquare() || (this.downSquare().name ==! 'dirt' || this.downSquare().name ==! 'oak')) ||
+                        (this.upSquare() && (this.upSquare().name ==! 'leaves' || this.upSquare().name ==! 'oak' || this.upSquare().name ==! 'empty'))) {
+                        // From under: There isn't a square or its not a dirt or an oak
+                        // From above: There is a square but its not leaves, oak or empty
+                        return false;
+                    }
+                } else if (mineral.name === 'stone') {
+                    if ((!this.downSquare() || (this.downSquare().name ==! 'dirt' || this.downSquare().name ==! 'stone')) ||
+                        (this.upSquare() && (this.upSquare().name ==! 'stone' || this.upSquare().name ==! 'empty'))) {
+                        // From under: There isn't a square or its not a dirt or stone
+                        // From above: There is a square but its not stone or empty
+                        return false;
+                    }
+                }
+            }
+        }
     }
 
-    getBoard = () => {
-        return this.board;
+    downSquare = (i, j) => {
+        return this.board[i+1][j];
     }
 
+    upSquare = (i, j) => {
+        return this.board[i-1][j];
+    }
 }

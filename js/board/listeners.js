@@ -96,6 +96,8 @@ const inventoryGridListener = document.addEventListener('click', (e) => {
                 inventoryElement.style.backgroundImage = '';
             }
             inventoryElement.style.borderColor = 'unset';
+            
+            console.log(board.isBoardArranged());
         }
     }
 });
