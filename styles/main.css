@@ -323,9 +323,8 @@ body .opening {
     align-items: center;
     justify-content: space-between;
     padding: 5vmin;
-    background: rgba(255, 255, 255, 0.2);
-    margin-top: 15vh; }
-    body .opening .menu .play {
+    background: rgba(255, 255, 255, 0.2); }
+    body .opening .menu .play, body .opening .menu .settings, body .opening .menu .description, body .opening .menu .game-rules {
       background: none;
       font-size: 5vh;
       margin-bottom: 5vh;
@@ -334,12 +333,11 @@ body .opening {
       outline: none;
       border: none;
       text-shadow: 0.1vh 0.5vh black; }
-    body .opening .menu .description {
-      font-size: 5vh;
-      cursor: pointer;
-      color: #847A79;
-      text-shadow: 0.1vh 0.5vh black; }
-    body .opening .menu .play:hover {
+    body .opening .menu summary {
+      font-size: 5vh; }
+    body .opening .menu .game-rules, body .opening .menu .description {
+      font-size: 4vh; }
+    body .opening .menu .play:hover, body .opening .menu summary:hover {
       text-decoration: underline; }
 
 body {
@@ -456,6 +454,7 @@ body {
   display: none;
   flex-flow: column wrap;
   justify-content: space-between;
+  align-items: center;
   height: 25vh;
   padding: 5vh; }
   .message-content {
@@ -464,7 +463,8 @@ body {
     height: 5vh;
     background: rgba(255, 255, 255, 0.8);
     font-size: 3vh;
-    user-select: none; }
+    user-select: none;
+    padding: 0 2vh; }
   .message button {
     padding: 1vh;
     margin: 1vh;

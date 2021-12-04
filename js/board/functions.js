@@ -1,17 +1,13 @@
 import Board from '../modules/board.js';
 
 let board = null;
+let countDown = null;
+const gameTimer = 60;
 
 const setGame = (n) => {
     if (n > 4) {
-        const containerElement = document.querySelector('.container');
-        
         board = new Board(n);
-        board.fillBoardRandomly();
-        containerElement.replaceChild(board.toGrid(), containerElement.children[1]);
-        containerElement.style.display = 'flex';
         resetBoard();
-
     } else {
         alert('Board must have at least 5 rows and columns');
     }
@@ -19,18 +15,19 @@ const setGame = (n) => {
 
 const resetBoard = () => {
     const timerElement = document.querySelector('.timer');
-    const scoreElement = document.querySelector('.score');
     const messageElement = document.querySelector('.message');
-    const messageContentElement = document.querySelector('.message-content');
     const inventoryElement = document.querySelector('.inventory');
     const activeBoxElement = document.querySelectorAll('.tools');
     const toolsElements = document.querySelectorAll('.tools');
-    
-    clearInterval(countDown);
-    timerElement.textContent = 1;
-    scoreElement.textContent = 0;
+    const containerElement = document.querySelector('.container');
+
+    containerElement.style.display = 'flex';
+    board.fillBoardRandomly();
+    containerElement.replaceChild(board.toGrid(), containerElement.children[1]);
+
+    // clearInterval(countDown);
+    timerElement.textContent = gameTimer;
     messageElement.style.display = 'none';
-    messageContentElement.textContent = 'Time is up!';
     inventoryElement.style.borderColor = 'unset';
     inventoryElement.disabled = false;
     inventoryElement.children[0].textContent = 0;
@@ -44,7 +41,6 @@ const resetBoard = () => {
 
 }
 
-let countDown = null;
 const startClock = () => {
     const timerElement = document.querySelector('.timer');
     countDown = setInterval(() => {
@@ -52,24 +48,45 @@ const startClock = () => {
 
         if (timerElement.textContent === '0') {
             clearInterval(countDown);
-            gameOver();
+            timeIsUp();
         }
     }, 1000)
 }
 
-const gameOver = () => {
+const timeIsUp = () => {
     const messageElement = document.querySelector('.message');
     const messageContentElement = document.querySelector('.message-content');
+    const messageButtonsNextElement = document.querySelector('.message-buttons-next');
     const activeBoxElement = document.querySelectorAll('.tools');
     const inventoryElement = document.querySelector('.inventory');
     
     messageElement.style.display = 'flex';
     messageContentElement.textContent = 'Time is up!';
+    messageButtonsNextElement.style.display = 'none';
     activeBoxElement.forEach((button) => {
         button.disabled = true;
     })
     inventoryElement.disabled = true;
 }
 
+const wonGame = () => {
+    const messageElement = document.querySelector('.message');
+    const messageContentElement = document.querySelector('.message-content');
+    const messageButtonsNextElement = document.querySelector('.message-buttons-next');
+    const activeBoxElement = document.querySelectorAll('.tools');
+    const inventoryElement = document.querySelector('.inventory');
+    const scoreElement = document.querySelector('.score');
+    
+    // clearInterval(countDown);
+    messageElement.style.display = 'flex';
+    messageContentElement.textContent = 'Well Done!';
+    messageButtonsNextElement.style.display = 'unset';
+    activeBoxElement.forEach((button) => {
+        button.disabled = true;
+    })
+    inventoryElement.disabled = true;
+    scoreElement.textContent = +scoreElement.textContent + board.squaresInLine * 10;
+}
 
-export { setGame, board, startClock, resetBoard};
+
+export { setGame, board, startClock, resetBoard, setGame, wonGame};

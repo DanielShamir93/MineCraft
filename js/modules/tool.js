@@ -1,4 +1,5 @@
 import Mineral from './mineral.js';
+import { DIRT, GRASS, LEAVES, OAK, STONE } from '../board/variables.js';
 
 export default class Tool {
 
@@ -6,11 +7,11 @@ export default class Tool {
         this.name = name;
 
         if (name === 'pickaxe') {
-            this.canMineArray = [ new Mineral('stone') ];
+            this.canMineArray = [ new Mineral(STONE) ];
         } else if (name === 'shovel') {
-            this.canMineArray = [ new Mineral('dirt'), new Mineral('grass') ];
+            this.canMineArray = [ new Mineral(DIRT), new Mineral(GRASS) ];
         } else if (name === 'axe') {
-            this.canMineArray = [ new Mineral('leaves'), new Mineral('oak') ];
+            this.canMineArray = [ new Mineral(LEAVES), new Mineral(OAK) ];
         }
     }
 

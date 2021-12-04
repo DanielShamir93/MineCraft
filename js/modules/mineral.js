@@ -1,17 +1,18 @@
+import { DIRT, GRASS, LEAVES, OAK, STONE } from '../board/variables.js';
 export default class Mineral {
 
     constructor (name) {
         this.name = name;
         this.image = (
-            name === 'dirt' ? 
+            name === DIRT ? 
             './assets/images/Dirt.png' :
-            name === 'grass' ?
+            name === GRASS ?
             './assets/images/Grass.png' :
-            name === 'leaves' ?
+            name === LEAVES ?
             './assets/images/Leaves.png' :
-            name === 'oak' ? 
+            name === OAK ? 
             './assets/images/Oak.png' :
-            name === 'stone' ?
+            name === STONE ?
             this.image = './assets/images/Stone.png': 
             ''
         );

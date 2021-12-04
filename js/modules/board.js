@@ -1,6 +1,7 @@
 import Mineral from './mineral.js';
 import MineralsList from './mineralsList.js';
-import Tool from './tool.js'
+import { DIRT, GRASS, LEAVES, OAK, STONE } from '../board/variables.js';
+
 export default class Board {
 
     constructor(squaresInLine) {
@@ -123,6 +124,10 @@ export default class Board {
         return this.activeTool;
     }
 
+    getSquaresInLine = () => {
+        return this.squaresInLine;
+    }
+
     isBoardArranged = () => {
 
         // inventory is not empty
@@ -134,39 +139,34 @@ export default class Board {
             for (let j = 0; j < this.squaresInLine; j++) {
                 let mineral = this.board[i][j];
 
-                if (mineral.name === 'dirt') {
+                if (mineral.name === DIRT) {
                     if (this.downSquare(i, j) &&
-                        this.downSquare(i, j).name !== 'dirt') {
-                        console.log('from dirt')
+                        this.downSquare(i, j).name !== DIRT) {
                         // From under: There is a square but its not dirt
                         return false;
                     }
-                } else if (mineral.name === 'grass') {
+                } else if (mineral.name === GRASS) {
                     if (!this.downSquare(i, j) ||
-                        this.downSquare(i, j).name !== 'dirt') {
+                        this.downSquare(i, j).name !== DIRT) {
                         // From under: There isn't a square or there is a square but its not dirt
-                        console.log('from grass')
                         return false;
                     }
-                } else if (mineral.name === 'leaves') {
+                } else if (mineral.name === LEAVES) {
                     if (!this.isAttachedToOak(i, j)) {
-                        console.log('from leaves');
                         return false;
                     }   
-                } else if (mineral.name === 'oak') {
-                    if ((!this.downSquare(i, j) || (this.downSquare(i, j).name !== 'grass' && this.downSquare(i, j).name !== 'oak')) ||
-                        (this.upSquare(i, j) && (this.upSquare(i, j).name !== 'leaves' && this.upSquare(i, j).name !== 'oak' && this.upSquare(i, j).name !== 'empty'))) {
+                } else if (mineral.name === OAK) {
+                    if ((!this.downSquare(i, j) || (this.downSquare(i, j).name !== GRASS && this.downSquare(i, j).name !== OAK)) ||
+                        (this.upSquare(i, j) && (this.upSquare(i, j).name !== LEAVES && this.upSquare(i, j).name !== OAK && this.upSquare(i, j).name !== 'empty'))) {
                         // From under: There isn't a square or its not a grass and not an oak
                         // From above: There is a square but its not leaves, not oak and not empty
-                        console.log('from oak')
                         return false;
                     }
-                } else if (mineral.name === 'stone') {
-                    if ((!this.downSquare(i, j) || (this.downSquare(i, j).name !== 'grass' && this.downSquare(i, j).name !== 'stone')) ||
-                        (this.upSquare(i, j) && (this.upSquare(i, j).name !== 'stone' && this.upSquare(i, j).name !== 'leaves' && this.upSquare(i, j).name !== 'empty'))) {
+                } else if (mineral.name === STONE) {
+                    if ((!this.downSquare(i, j) || (this.downSquare(i, j).name !== GRASS && this.downSquare(i, j).name !== STONE)) ||
+                        (this.upSquare(i, j) && (this.upSquare(i, j).name !== STONE && this.upSquare(i, j).name !== LEAVES && this.upSquare(i, j).name !== 'empty'))) {
                         // From under: There isn't a square or its not a grass and not a stone
                         // From above: There is a square but its not stone and not leaves and not empty
-                        console.log('from stone')
                         return false;
                     }
                 }
@@ -220,9 +220,9 @@ export default class Board {
         
         const currentMineral = this.board[i][j];
 
-        if (currentMineral.name === 'oak') {
+        if (currentMineral.name === OAK) {
             return true;
-        } else if (currentMineral.name !== 'leaves') {
+        } else if (currentMineral.name !== LEAVES) {
             return false;
         }
 

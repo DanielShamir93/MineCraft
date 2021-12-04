@@ -1,4 +1,4 @@
-import { board, startClock, resetBoard } from './functions.js';
+import { board, startClock, resetBoard, setGame, wonGame } from './functions.js';
 import Mineral from '../modules/mineral.js';
 import Tool from '../modules/tool.js';
 
@@ -26,7 +26,7 @@ const activeToolListener = document.addEventListener('click', (e) => {
         toolElement.style.borderColor = 'green';
         document.querySelector('.inventory').style.borderColor = 'unset';
         // Start the clock
-        startClock();
+        // startClock();
     }
 });
 
@@ -104,9 +104,10 @@ const inventoryGridListener = document.addEventListener('click', (e) => {
             // update inventory stack number
             inventoryElement.children[0].textContent--;
 
+            if (board.isBoardArranged()) {
+                wonGame();
+            }
 
-
-            console.log(board.isBoardArranged());
         }
     }
 });
@@ -120,6 +121,11 @@ const playAgainListener = document.querySelector('.message-buttons-retry').addEv
     resetBoard();
 });
 
-export { mineralToInventoryListener, activeToolListener, inventoryButtonListener, inventoryGridListener, goToMenuListener, playAgainListener };
+const nextLevelListener = document.querySelector('.message-buttons-next').addEventListener('click', (e) => {
+    const n = board.getSquaresInLine();
+    setGame(n + 1);
+});
+
+export { mineralToInventoryListener, activeToolListener, inventoryButtonListener, inventoryGridListener, goToMenuListener, playAgainListener, nextLevelListener };
 
 
