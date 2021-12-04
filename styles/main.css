@@ -496,7 +496,8 @@ body {
       justify-content: space-around;
       margin-bottom: 10vh; }
       .container .status-box {
-        flex-flow: row nowrap; }
+        flex-flow: row nowrap;
+        position: relative; }
         .container .status-box .timer {
           width: 20vw;
           font-size: 8vw;
@@ -509,8 +510,8 @@ body {
           font-size: 8vw;
           color: white;
           position: absolute;
-          top: 5vh;
-          left: 50vw;
+          top: 8vh;
+          left: 75%;
           transform: translateX(-50%); }
       .container .status .to-menu {
         font-size: 2vh;
