@@ -488,7 +488,8 @@ body {
     flex-flow: column wrap; }
     .container .status {
       flex-flow: row nowrap;
-      justify-content: space-around; }
+      justify-content: space-around;
+      margin-bottom: 10vh; }
       .container .status-box {
         flex-flow: row nowrap;
         position: relative; }
@@ -508,4 +509,17 @@ body {
           left: 40vw; }
       .container .status .to-menu {
         font-size: 2vh;
-        margin-bottom: 0; } }
+        margin-bottom: 0; }
+    .container .active-box {
+      flex-flow: row nowrap;
+      margin-top: 10vh; }
+      .container .active-box .tool-box {
+        flex-flow: row wrap; }
+        .container .active-box .tool-box .tools {
+          height: 20vw;
+          width: 20vw;
+          margin: 0;
+          border-width: 1vw; }
+      .container .active-box .inventory {
+        margin-top: 0;
+        margin-left: 10vw; } }
