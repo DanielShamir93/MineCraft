@@ -16,12 +16,15 @@ const activeToolListener = document.addEventListener('click', (e) => {
         }
 
         board.setActiveTool(new Tool(toolName));
-
-        // Reset the style to the tools buttons
+        board.setPopPossible(false);
+        
+        // Reset the style to the tools and inventory buttons
         document.querySelectorAll('.tools').forEach((tool) => {
             tool.style.borderColor = 'unset';
         })
+        // Set style for current tool button and reset inventory style
         toolElement.style.borderColor = 'green';
+        document.querySelector('.inventory').style.borderColor = 'unset';
     }
 });
 
@@ -48,10 +51,10 @@ const mineralToInventoryListener = document.addEventListener('click', (e) => {
         // Render the grid
         let container = document.querySelector('.container');
         container.replaceChild(board.toGrid(), container.children[1]);
-
-        // Set the background image of the inventory button 
+        // Set the background image of the inventory button and update stack size
         const inventoryElement = document.querySelector('.inventory');
         inventoryElement.style.backgroundImage = `url(${(new Mineral(mineralName)).image})`;
+        inventoryElement.children[0].textContent++;
     }
 });
 
@@ -96,7 +99,11 @@ const inventoryGridListener = document.addEventListener('click', (e) => {
                 inventoryElement.style.backgroundImage = '';
             }
             inventoryElement.style.borderColor = 'unset';
-            
+            // update inventory stack number
+            inventoryElement.children[0].textContent--;
+
+
+
             console.log(board.isBoardArranged());
         }
     }

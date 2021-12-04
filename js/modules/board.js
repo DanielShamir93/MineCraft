@@ -88,6 +88,10 @@ export default class Board {
         return this.inventoryStack.length === 0;
     }
 
+    getInventoryLength = () => {
+        return inventoryStack.length;
+    }
+
     setPopPossible = (boolean) => {
         this.isInventoryPopPossible = boolean;
     }

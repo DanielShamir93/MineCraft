@@ -5,17 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MineCraft</title>
-    <link rel="stylesheet" href="./styles/main.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Pacifico&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="./styles/main.css" />
     <script type="module" src="./js/index.js" defer></script>
   </head>
   <body>
     <main class="opening">
       <section class="menu">
-        <button class="play">Play</button>
-        <details class="description">Description</details>
+        <button type="button" class="play">Play</button>
+        <button type="button" class="play">Settings</button>
+        <details class="description">
+          <p>...</p>
+        </details>
       </section>
     </main>
     <main class="container">
@@ -25,6 +28,7 @@
           <p class="score">Score: 0</p>
           <p class="comment"></p>
         </div>
+        <button class="to-menu">Menu</button>
       </aside>
       <aside class="active-box">
         <div class="tool-box">
@@ -32,7 +36,9 @@
           <button tool="shovel" class="tools"></button>
           <button tool="axe" class="tools"></button>
         </div>
-        <button class="inventory"></button>
+        <button class="inventory">
+          <span class="inventory-size">0</span>
+        </button>
       </aside>
     </main>
   </body>
