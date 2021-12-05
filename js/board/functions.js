@@ -8,6 +8,7 @@ const setGame = (n = 5) => {
     if (n > 4) {
         board = new Board(n);
         resetBoard();
+        startClock();
     } else {
         alert('Board must have at least 5 rows and columns');
     }
@@ -25,7 +26,7 @@ const resetBoard = () => {
     board.fillBoardRandomly();
     containerElement.replaceChild(board.toGrid(), containerElement.children[1]);
 
-    // clearInterval(countDown);
+    clearInterval(countDown);
     timerElement.textContent = gameTimer;
     messageElement.style.display = 'none';
     inventoryElement.style.borderColor = 'unset';
@@ -77,7 +78,7 @@ const wonGame = () => {
     const inventoryElement = document.querySelector('.inventory');
     const scoreElement = document.querySelector('.score');
     
-    // clearInterval(countDown);
+    clearInterval(countDown);
     messageElement.style.display = 'flex';
     messageContentElement.textContent = 'Well Done!';
     messageButtonsNextElement.style.display = 'unset';
@@ -89,4 +90,4 @@ const wonGame = () => {
 }
 
 
-export { setGame, board, startClock, resetBoard, wonGame};
+export { setGame, board, resetBoard, wonGame};

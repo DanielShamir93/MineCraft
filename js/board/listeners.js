@@ -1,4 +1,4 @@
-import { board, startClock, resetBoard, setGame, wonGame } from './functions.js';
+import { board, resetBoard, setGame, wonGame } from './functions.js';
 import Mineral from '../modules/mineral.js';
 import Tool from '../modules/tool.js';
 
@@ -25,8 +25,6 @@ const activeToolListener = document.addEventListener('click', (e) => {
         // Set style for current tool button and reset inventory style
         toolElement.style.borderColor = 'green';
         document.querySelector('.inventory').style.borderColor = 'unset';
-        // Start the clock
-        // startClock();
     }
 });
 
