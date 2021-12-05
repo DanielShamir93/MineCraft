@@ -89,4 +89,4 @@ const wonGame = () => {
 }
 
 
-export { setGame, board, startClock, resetBoard, setGame, wonGame};
+export { setGame, board, startClock, resetBoard, wonGame};
