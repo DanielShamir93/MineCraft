@@ -2,19 +2,20 @@ import Board from '../modules/board.js';
 
 let board = null;
 let countDown = null;
-const gameTimer = 60;
 
 const setGame = (n = 5) => {
     if (n > 4) {
+        let clockDuration = n * 12;
+        
         board = new Board(n);
-        resetBoard();
+        resetBoard(clockDuration);
         startClock();
     } else {
         alert('Board must have at least 5 rows and columns');
     }
 }
 
-const resetBoard = () => {
+const resetBoard = (clockDuration) => {
     const timerElement = document.querySelector('.timer');
     const messageElement = document.querySelector('.message');
     const inventoryElement = document.querySelector('.inventory');
@@ -27,7 +28,7 @@ const resetBoard = () => {
     containerElement.replaceChild(board.toGrid(), containerElement.children[1]);
 
     clearInterval(countDown);
-    timerElement.textContent = gameTimer;
+    timerElement.textContent = clockDuration;
     messageElement.style.display = 'none';
     inventoryElement.style.borderColor = 'unset';
     inventoryElement.disabled = false;
