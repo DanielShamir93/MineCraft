@@ -337,8 +337,15 @@ body {
       outline: none;
       border: none;
       text-shadow: 0.1vh 0.5vh black; }
-    .opening .menu summary {
+    .opening .menu details summary {
       font-size: 5vh; }
+    .opening .menu details label {
+      font-size: 4vh; }
+    .opening .menu details #line-square-number {
+      width: 10vh;
+      text-align: center;
+      height: 5vh;
+      font-size: 4vh; }
     .opening .menu .game-rules, .opening .menu .description {
       font-size: 4vh; }
     .opening .menu .play:hover, .opening .menu summary:hover {

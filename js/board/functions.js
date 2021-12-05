@@ -4,7 +4,7 @@ let board = null;
 let countDown = null;
 const gameTimer = 60;
 
-const setGame = (n) => {
+const setGame = (n = 5) => {
     if (n > 4) {
         board = new Board(n);
         resetBoard();

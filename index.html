@@ -18,7 +18,11 @@
     <main class="opening">
       <section class="menu">
         <button type="button" class="play">Play</button>
-        <button type="button" class="settings">Settings</button>
+        <details class="settings">
+          <summary>Settings</summary>
+            <label for="line-square-number">Number of Squares in line: </label>
+            <input id="line-square-number" type="number" min="5" max="99" maxLength="2" value="5" required>
+        </details>
         <details class="description">
           <summary>Description</summary>
             <p>Minecraft is a 2D game where users can create their own worlds and experiences, using building blocks, resources discovered on the site and their own creativity.</p>
@@ -34,7 +38,7 @@
         <div class="status-box">
           <p class="timer"></p>
           <label for="score">Score</label>
-          <p class="score">0</p>
+          <p id="score" class="score">0</p>
         </div>
         <button class="to-menu">Menu</button>
       </aside>
