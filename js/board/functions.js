@@ -10,8 +10,10 @@ const setGame = (n = 5) => {
         board = new Board(n);
         resetBoard(clockDuration);
         startClock();
+        return true;
     } else {
         alert('Board must have at least 5 rows and columns');
+        return false;
     }
 }
 
